@@ -27,12 +27,41 @@ print('The total wordcount of your list is :',len(list_of_words))
 
 # The next step would be to initialize an empty dictionary.
 frequency_counter = {}
+# for word in list_of_words:
+#     if word in frequency_counter:
+#         frequency_counter[word] += 1
+#     else:
+#         frequency_counter[word] = 1
+
+# print(frequency_counter['the'])
+
+# This can be done using the get method as well.
 for word in list_of_words:
-    if word in frequency_counter:
-        frequency_counter[word] += 1
-    else:
-        frequency_counter[word] = 1
+    frequency_counter[word] = frequency_counter.get(word, 0) + 1
 
-print(frequency_counter['the'])
+# The number of unique words can be found out using the number of unique keys.
+# And, the number of unique keys can simply be found out using the 'len' function.
+print(f'The number of unique words in the prompt are {len(frequency_counter)}')
 
+# Next, we need to sort the dictionary in descending order of word frequency.
+sorted_word_list = sorted(frequency_counter.items(), key=lambda pair: pair[1], reverse=True)
+print(sorted_word_list)
 
+# Next, we need to find the most frequent word from that sorted list.
+# Ideally, since the list is already sorted, it is going to be the first word (having the highest frequency).
+most_frequent_word = sorted_word_list[0]
+print(f'The most frequent word is "{most_frequent_word[0]}" with a count of {most_frequent_word[1]}.')
+
+# Next, we need all the words with a count of more than 1 and equal to 1.
+# This can be done using a simple iteration in which we check the value against each key and update the corresponding variable accordingly.
+words_with_count_exactly_one = 0
+words_with_count_more_than_one = 0
+
+for word in frequency_counter:
+    if frequency_counter[word] > 1:
+        words_with_count_more_than_one += 1
+    
+    elif frequency_counter[word] == 1:
+        words_with_count_exactly_one += 1
+
+print(f'There are {words_with_count_more_than_one} words which have a frequency of more than 1 and {words_with_count_exactly_one} words which have a frequency of exactly 1.')
