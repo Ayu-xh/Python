@@ -57,11 +57,18 @@ print(f'The most frequent word is "{most_frequent_word[0]}" with a count of {mos
 words_with_count_exactly_one = 0
 words_with_count_more_than_one = 0
 
-for word in frequency_counter:
-    if frequency_counter[word] > 1:
-        words_with_count_more_than_one += 1
-    
-    elif frequency_counter[word] == 1:
-        words_with_count_exactly_one += 1
+# We also need to save the words as well, and for that we can make new lists.
+words_with_count_exactly_one_list = []
+words_with_count_more_than_one_list = []
 
-print(f'There are {words_with_count_more_than_one} words which have a frequency of more than 1 and {words_with_count_exactly_one} words which have a frequency of exactly 1.')
+for word in sorted_word_list:
+    if word[1] > 1:
+        words_with_count_more_than_one += 1
+        words_with_count_more_than_one_list.append(word)
+    
+    elif word[1] == 1:
+        words_with_count_exactly_one += 1
+        words_with_count_exactly_one_list.append(word)
+
+print(f'There are {words_with_count_exactly_one} words with a count of 1 exactly which are as follows : {words_with_count_exactly_one_list}')
+print(f'There are {words_with_count_more_than_one} words with a count of more than 1 exactly which are as follows : {words_with_count_more_than_one_list}')
