@@ -19,8 +19,32 @@ with open('student.txt', encoding='utf-8') as file:
 
         student_data_list.append(student_data_dict)
 
+# Now that we have all the data about all the students, we can have some general statistics about the entire class.
+# We can start by declaring variables and assigning them to 0.
+highest_average_score = 0
+highest_average_student_name = ""
+lowest_average_score = float('inf')
+lowest_average_student_name = ""
+total_average_score = 0
 
-print(student_data_list)
+for student in student_data_list:
+    if student['average_score'] > highest_average_score:
+        highest_average_score = student['average_score']
+        highest_average_student_name = student['name']
+
+    if student['average_score'] < lowest_average_score:
+        lowest_average_score = student['average_score']
+        lowest_average_student_name = student['name']
+
+    total_average_score += student['average_score']
+    
+# Next we calculate the average of all averages of the students in the class.
+average_of_averages = total_average_score/len(student_data_list)
+
+print(f'The highest average score in the class is {highest_average_score} and is scored by {highest_average_student_name}')
+print(f'The lowest average score in the class is {lowest_average_score} and is scored by {lowest_average_student_name}')
+print(f'The average class score is {round(average_of_averages, 2)}')
+
 
 
 
