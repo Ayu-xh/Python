@@ -5,19 +5,22 @@
 # Let us take a new list just for the sake of storing intermediate results.
 student_data_list = []
 
-with open('student.txt', encoding='utf-8') as file:
+with open('students.txt', encoding='utf-8') as file:
     file_data = file.readlines()
     for line in file_data:
         cleaned_line = line.rstrip('\n')
         split_data = cleaned_line.split(',')
         student_data_dict = {}
+        marks_as_int = list(map(int, split_data[1:]))
         student_data_dict['name'] = split_data[0]
-        student_data_dict['marks'] = list(map(int, split_data[1:]))
-        student_data_dict['highest_score'] = max(split_data[1:])
-        student_data_dict['lowest_score'] = min(split_data[1:])
-        student_data_dict['average_score'] = round((sum(list(map(int, split_data[1:]))))/len(split_data[1:]), 2)
+        student_data_dict['marks'] = marks_as_int
+        student_data_dict['highest_score'] = max(marks_as_int)
+        student_data_dict['lowest_score'] = min(marks_as_int)
+        student_data_dict['average_score'] = round(sum(marks_as_int)/len(marks_as_int), 2)
 
         student_data_list.append(student_data_dict)
+
+print(student_data_list)
 
 # Now that we have all the data about all the students, we can have some general statistics about the entire class.
 # We can start by declaring variables and assigning them to 0.
@@ -46,5 +49,11 @@ print(f'The lowest average score in the class is {lowest_average_score} and is s
 print(f'The average class score is {round(average_of_averages, 2)}')
 
 
-
+# Now all the scores have been calculated, and we just need to write to an output file.
+with open('report.txt', 'w', encoding='utf-8') as file:
+    file.write('The class results are as follows:\n')
+    for student in student_data_list:
+        file.write(f"{student['name']}, " 
+                   f"{student['average_score']}, "
+                   f"{'Pass' if student['average_score']>= 40 else 'Fail'}\n")
 

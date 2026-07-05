@@ -1,0 +1,6 @@
+The class results are as follows:
+Aditi, 85.0, Pass
+Rohan, 51.67, Pass
+Meera, 86.0, Pass
+Kabir, 35.0, Fail
+Sana, 97.67, Pass
