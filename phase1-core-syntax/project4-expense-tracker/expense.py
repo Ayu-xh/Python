@@ -3,8 +3,8 @@
 import datetime as dt
 
 class Expense:
-    def __init__(self, id, name, price, date, category):
-        self.id = id
+    def __init__(self, expense_id, name, price, date, category):
+        self.expense_id = expense_id
         self.name = name
         if price < 0:
             raise ValueError(f"Price cannot be negative. Received: {price}")
@@ -15,4 +15,4 @@ class Expense:
 
 # We will also be using the 'str' dunder method to get a clean, human-readable string as well.
     def __str__(self):
-        return f"ID: {self.id}\nExpense Name: {self.name}\nPrice: ₹{self.price}\nPurchased on: {self.date}\nExpense Category: {self.category}."
+        return f"ID: {self.expense_id}\nExpense Name: {self.name}\nPrice: ₹{self.price}\nPurchased on: {self.date}\nExpense Category: {self.category}."
