@@ -14,4 +14,12 @@ class ExpenseTracker:
         self.expenses[self.next_expense_id] = expense
         self.next_expense_id += 1
 
+    # Deleting the expense method.
+    def delete_expense(self, expense_id):
+        if expense_id not in self.expenses:
+            raise ValueError('Expense ID not found.')
+        self.expenses.pop(expense_id)
+        
+
+
 
