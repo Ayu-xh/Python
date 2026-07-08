@@ -1,5 +1,6 @@
 # Let us first import the Expense class from the expense.py file.
 from expense import Expense
+import datetime as dt
 
 # This expsense tracker class is required to store multiple expense objects.
 class ExpenseTracker:
@@ -36,7 +37,7 @@ class ExpenseTracker:
             expense.price = price
 
         if date is not None:
-            expense.date = date
+            expense.date = dt.datetime.strptime(date, "%Y-%m-%d").date()
 
         if category is not None:
             expense.category = category   
