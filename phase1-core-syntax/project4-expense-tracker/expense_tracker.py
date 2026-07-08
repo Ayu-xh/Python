@@ -20,6 +20,29 @@ class ExpenseTracker:
             raise ValueError('Expense ID not found.')
         self.expenses.pop(expense_id)
         
+    # Modifying the expense method.
+    def modify_expense(self, expense_id, name=None, price=None, date=None, category=None):
+        
+        if expense_id not in self.expenses:
+            raise ValueError('Expense ID not found.')
+
+        # Since, we will be using the expense object multiple times, it is better to store it in a local variable.
+        expense = self.expenses[expense_id] 
+
+        if name is not None:
+            expense.name = name  
+
+        if price is not None:
+            expense.price = price
+
+        if date is not None:
+            expense.date = date
+
+        if category is not None:
+            expense.category = category   
+        
+        
+        
 
 
 
