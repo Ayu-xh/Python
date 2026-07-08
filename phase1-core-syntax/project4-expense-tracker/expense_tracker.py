@@ -50,7 +50,15 @@ class ExpenseTracker:
         for expense in self.expenses.values():
             print(expense)
         
-        
+    # Creating the summary dictionary.
+    def summary_by_category(self):
+        summary_dict = {}
+        for expense in self.expenses.values():
+            current_category_value = summary_dict.get(expense.category, 0)
+            summary_dict[expense.category] = current_category_value + expense.price
+
+        return summary_dict
+            
         
 
 
