@@ -40,7 +40,15 @@ class ExpenseTracker:
             expense.date = dt.datetime.strptime(date, "%Y-%m-%d").date()
 
         if category is not None:
-            expense.category = category   
+            expense.category = category  
+
+    # Viewing the expenses.
+    def list_expenses(self):
+        if not self.expenses:
+            print('No expenses found')
+            return
+        for expense in self.expenses.values():
+            print(expense)
         
         
         
