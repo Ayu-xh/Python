@@ -58,6 +58,18 @@ class ExpenseTracker:
             summary_dict[expense.category] = current_category_value + expense.price
 
         return summary_dict
+    
+    # Creating a summary by month.
+    def summary_by_month(self):
+        summary_by_month = {}
+        for expense in self.expenses.values():
+            key = (expense.date.year, expense.date.month)
+            current_year_value = summary_by_month.get(key, 0)
+            summary_by_month[key] = current_year_value + expense.price
+        
+        return summary_by_month
+            
+            
             
         
 
